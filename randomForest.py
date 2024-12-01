@@ -1,29 +1,28 @@
-# Import necessary libraries
 import pandas as pd
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import numpy as np
 
-# Step 1: Load the Dataset
+# Load the Dataset
 file_path = '/Users/zhenghaozhang/hw/4740/project/final_unnormalized_data.csv'  # Update path if necessary
 dataset = pd.read_csv(file_path)
 
-# Step 2: Define Features (X) and Target (y)
+# Define Features (X) and Target (y)
 X = dataset.drop(columns=['GPA'])  # Features
 y = dataset['GPA']  # Target variable
 
-# Step 3: Split the Data into Training and Testing Sets
+# Split the Data into Training and Testing Sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Step 4: Train the Random Forest Regressor
+# Train the Random Forest Regressor
 rf_regressor = RandomForestRegressor(random_state=42, n_estimators=100)
 rf_regressor.fit(X_train, y_train)
 
-# Step 5: Make Predictions on the Test Set
+# Make Predictions on the Test Set
 y_pred_rf = rf_regressor.predict(X_test)
 
-# Step 6: Evaluate the Random Forest Model on the Test Set
+# Evaluate the Random Forest Model on the Test Set
 mae_rf = mean_absolute_error(y_test, y_pred_rf)
 mse_rf = mean_squared_error(y_test, y_pred_rf)
 rmse_rf = np.sqrt(mse_rf)
@@ -36,7 +35,7 @@ print(f"Mean Squared Error (MSE): {mse_rf}")
 print(f"Root Mean Squared Error (RMSE): {rmse_rf}")
 print(f"R-squared (R^2): {r2_rf}")
 
-# Step 7: Perform Cross-Validation
+# Perform Cross-Validation
 cv_scores = cross_val_score(rf_regressor, X, y, cv=10, scoring='r2')  # 10-fold cross-validation
 print("\nCross-Validation R^2 Scores:", cv_scores)
 print("Mean R^2 Score (Cross-Validation):", np.mean(cv_scores))
