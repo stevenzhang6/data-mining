@@ -1,5 +1,7 @@
 import pandas as pd
 from scipy.stats import pearsonr
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Load the Dataset
 file_path = '/Users/zhenghaozhang/hw/4740/project/final_normalized_data.csv'
@@ -32,3 +34,15 @@ correlation_df.sort_values(by="Correlation", ascending=False, inplace=True)
 correlation_df.reset_index(drop=True, inplace=True)
 print("Correlation Analysis Results:")
 print(correlation_df)
+
+# Create a Correlation Matrix for Heatmap
+correlation_matrix = final_dataset[numeric_columns].corr()
+
+# Plot the Heatmap
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, cmap="coolwarm", fmt=".2f", xticklabels=numeric_columns, yticklabels=numeric_columns)
+plt.title("Heatmap of Feature Correlations", fontsize=16)
+plt.xticks(rotation=45, ha='right', fontsize=12)  # Rotate x-axis labels
+plt.yticks(fontsize=12)  # Adjust y-axis label font size
+plt.tight_layout()  # Automatically adjust spacing for better visibility
+plt.show()
