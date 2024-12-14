@@ -5,7 +5,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 import numpy as np
 
 # Load the Dataset
-file_path = '/Users/zhenghaozhang/hw/4740/project/final_unnormalized_data.csv'  # Update path if necessary
+file_path = '/Users/zhenghaozhang/hw/4740/project/final_unnormalized_data.csv'
 dataset = pd.read_csv(file_path)
 
 # Define Features (X) and Target (y)
