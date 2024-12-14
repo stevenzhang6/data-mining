@@ -8,7 +8,7 @@ from sklearn.multiclass import OneVsRestClassifier
 import numpy as np
 
 # Load the Dataset
-file_path = '/Users/zhenghaozhang/hw/4740/project/final_normalized_data.csv'  # Update this path if necessary
+file_path = '/Users/zhenghaozhang/hw/4740/project/final_normalized_data.csv'
 dataset = pd.read_csv(file_path)
 
 # Define Features (X) and Target (y)
