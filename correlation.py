@@ -2,7 +2,7 @@ import pandas as pd
 from scipy.stats import pearsonr
 
 # Load the Dataset
-file_path = '/Users/zhenghaozhang/hw/4740/project/final_normalized_data.csv'  # Update path if needed
+file_path = '/Users/zhenghaozhang/hw/4740/project/final_normalized_data.csv'
 final_dataset = pd.read_csv(file_path)
 
 # Define Numeric Columns for Correlation Analysis
